@@ -1,6 +1,6 @@
 import css from "./App.module.css";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Navigation from "../../components/Navigation/Navigation";
 import HomePage from "../../pages/HomePage";
@@ -8,6 +8,7 @@ import MoviesPage from "../../pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage";
 import MovieCast from "../MovieCast/MovieCast";
 import MovieReviews from "../MovieReviews/MovieReviews";
+import MovieVideo from "../MovieVideo/MovieVideo";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/movies" element={<MoviesPage />} />
               <Route path="//movies/:movieId" element={<MovieDetailsPage />}>
+                <Route index element={<Navigate to="video" replace />} />
+
+                <Route path="video" element={<MovieVideo />} />
                 <Route path="cast" element={<MovieCast />} />
                 <Route path="reviews" element={<MovieReviews />} />
               </Route>

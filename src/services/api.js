@@ -31,3 +31,10 @@ export const RequestCastMovieById = async (movieId) => {
   );
   return data;
 };
+export const RequestVideoMovieById = async (movieId) => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+    options
+  );
+  return data;
+};

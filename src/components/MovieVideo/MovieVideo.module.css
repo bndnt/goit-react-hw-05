@@ -1,0 +1,8 @@
+.videoFrame {
+  width: 85%;
+  height: 40vw;
+}
+.videoList {
+  padding: 20px 0 0;
+  list-style: none;
+}

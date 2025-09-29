@@ -73,6 +73,14 @@ const MovieDetailsPage = () => {
           className={({ isActive }) =>
             clsx(css.postDetailsAdditionalNav, isActive && css.linkActive)
           }
+          to="video"
+        >
+          Video
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            clsx(css.postDetailsAdditionalNav, isActive && css.linkActive)
+          }
           to="cast"
         >
           Cast
