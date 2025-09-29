@@ -74,7 +74,15 @@ const MovieReviews = () => {
                       ★
                     </span>
                   ))}
-                  <span> ({item.author_details.rating}/10)</span>
+                  <span>
+                    (
+                    {item.author_details.rating > 0 ? (
+                      <span>{item.author_details.rating}/10</span>
+                    ) : (
+                      <span>0/10</span>
+                    )}
+                    )
+                  </span>
                 </span>
                 <span>
                   {isExpanded

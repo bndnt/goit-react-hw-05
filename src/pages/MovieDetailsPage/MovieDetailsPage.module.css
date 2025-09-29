@@ -36,16 +36,17 @@
   padding: 0;
 }
 .postDetailsAdditionalNav {
-  color: rgb(235, 87, 87);
+  color: black;
   margin-right: 10px;
   font-size: 18px;
   transition: all 0.3s ease-in-out;
 }
 .postDetailsAdditionalNav:hover {
-  color: rgb(199, 53, 53);
+  color: rgb(235, 87, 87);
 }
 .postDetailsAdditionalNav.linkActive {
   text-decoration: underline;
+  color: rgb(235, 87, 87);
 }
 @media (max-width: 991px) {
   .postDetailsFlex {
