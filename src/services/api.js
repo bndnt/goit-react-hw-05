@@ -38,3 +38,10 @@ export const RequestVideoMovieById = async (movieId) => {
   );
   return data;
 };
+export const RequestReviewsMovieById = async (movieId) => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US`,
+    options
+  );
+  return data;
+};

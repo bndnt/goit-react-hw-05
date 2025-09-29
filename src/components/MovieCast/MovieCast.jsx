@@ -21,7 +21,7 @@ const MovieCast = () => {
         setLoading(true);
         const data = await RequestCastMovieById(movieId);
         setCast(data.cast);
-        console.log("Cast", data.cast);
+        // console.log("Cast", data.cast);
       } catch (err) {
         setError(err.message);
       } finally {

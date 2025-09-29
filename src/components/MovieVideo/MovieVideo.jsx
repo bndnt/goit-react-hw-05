@@ -14,7 +14,7 @@ const MovieVideo = () => {
         setLoading(true);
         const data = await RequestVideoMovieById(movieId);
         setVideo(data.results);
-        console.log("Video", data.results);
+        // console.log("Video", data.results);
       } catch (err) {
         setError(err.message);
       } finally {
