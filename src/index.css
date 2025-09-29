@@ -101,7 +101,7 @@ button:focus-visible {
 }
 .swiper-button-next svg {
   left: 11px;
-  top: 28%;
+  top: 31%;
   position: relative;
   width: 15px;
   height: 23px;
@@ -141,4 +141,12 @@ button:focus-visible {
   }
 }
 @media (max-width: 650px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+  .swiper-wrapper {
+    width: 100%;
+    margin: 0;
+  }
 }

@@ -39,7 +39,7 @@ const MovieCast = () => {
         <Swiper
           breakpoints={{
             320: {
-              slidesPerView: 2.5,
+              slidesPerView: 2.2,
               spaceBetween: 10,
             },
             650: {

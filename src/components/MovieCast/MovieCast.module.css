@@ -19,6 +19,7 @@
   font-size: 14px;
   font-style: italic;
 }
+
 @media (max-width: 768px) {
   .castImg {
     height: 272px;
