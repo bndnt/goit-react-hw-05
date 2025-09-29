@@ -1,0 +1,86 @@
+.moviesList {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moviesListLink {
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  width: calc(100% / 4 - 20px);
+  transition: all 0.3s;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.moviesListLink:nth-child(4n) {
+  margin-right: 0;
+}
+.moviesListItem {
+  display: block;
+  padding: 20px 10px;
+}
+.moviesListItemImg {
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+}
+.moviesListItemText {
+  color: black;
+  font-size: 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease-in-out;
+}
+.moviesListLink:hover .moviesListItemText {
+  color: rgb(235, 87, 87);
+}
+.moviesListItemRate {
+  position: absolute;
+  background-color: rgb(235, 87, 87);
+  right: 10px;
+  font-size: 14px;
+  padding: 2px 10px;
+  color: white;
+}
+@media (max-width: 1300px) {
+  .moviesListLink {
+    display: block;
+    width: calc((100% / 3) - 10px);
+    transition: all 0.3s;
+    margin-right: 15px;
+  }
+  .moviesListLink:nth-child(4n) {
+    margin-right: 15px;
+  }
+  .moviesListLink:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+@media (max-width: 650px) {
+  .moviesListLink {
+    display: block;
+    width: calc((100% / 2) - 5px);
+    transition: all 0.3s;
+    margin-right: 10px;
+  }
+
+  .moviesListLink:nth-child(3n) {
+    margin-right: 10px;
+  }
+
+  .moviesListLink:nth-child(2n) {
+    margin-right: 0;
+  }
+  .moviesListItemText {
+    font-size: 14px;
+  }
+}

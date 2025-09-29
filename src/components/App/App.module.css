@@ -15,8 +15,14 @@
   padding: 30px 0;
 }
 .container {
-  width: 100%;
   max-width: 1270px;
+  width: 100%;
   padding: 0 15px;
   margin: 0 auto;
+}
+@media (max-width: 1300px) {
+  .container {
+    max-width: calc(100vw - 30px);
+    margin: 0;
+  }
 }
