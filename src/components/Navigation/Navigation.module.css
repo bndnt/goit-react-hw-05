@@ -1,0 +1,30 @@
+.navigation {
+  display: flex;
+  gap: 20px;
+}
+.link {
+  color: black;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.link::after {
+  content: "";
+  display: block;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  left: -5%;
+  bottom: -5px;
+  background-color: rgb(235, 87, 87);
+  width: 0;
+}
+.link:hover::after {
+  width: 105%;
+}
+.link:hover {
+  color: rgb(235, 87, 87);
+}
+.link.linkActive {
+  color: rgb(235, 87, 87);
+}
