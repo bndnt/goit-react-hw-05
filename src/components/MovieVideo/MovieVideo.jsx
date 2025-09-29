@@ -14,7 +14,7 @@ const MovieVideo = () => {
         setLoading(true);
         const data = await RequestVideoMovieById(movieId);
         setVideo(data.results);
-        // console.log("Video", data.results);
+        console.log("Video", data.results);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -29,19 +29,22 @@ const MovieVideo = () => {
       {error !== null && <p>{error}. Try again later.</p>}
       {video !== null && (
         <ul className={css.videoList}>
-          {video.slice(0, 1).map((item) => (
-            <li key={item.id}>
-              <iframe
-                className={css.videoFrame}
-                sandbox="allow-scripts allow-same-origin allow-presentation"
-                src={`https://www.youtube.com/embed/${item.key}`}
-                title={item.name}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </li>
-          ))}
+          {video
+            .filter((item) => item.type === "Trailer")
+            .slice(0, 1)
+            .map((item) => (
+              <li key={item.id}>
+                <iframe
+                  className={css.videoFrame}
+                  sandbox="allow-scripts allow-same-origin allow-presentation"
+                  src={`https://www.youtube.com/embed/${item.key}`}
+                  title={item.name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </li>
+            ))}
         </ul>
       )}
     </div>
