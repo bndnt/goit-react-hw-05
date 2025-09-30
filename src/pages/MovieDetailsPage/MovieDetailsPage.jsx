@@ -1,6 +1,6 @@
 import css from "./MovieDetailsPage.module.css";
 import clsx from "clsx";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { RequestSingleMovieById } from "../../services/api";
 import {
   Link,
@@ -16,7 +16,49 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const location = useLocation();
+
   const backLinkRef = useRef(location.state?.from ?? "/movies");
+  const outletRef = useRef(null);
+  useLayoutEffect(() => {
+    const el = outletRef.current;
+    if (!el) return;
+
+    // функция, которая вычисляет куда прокрутить
+    const alignOutlet = () => {
+      const header = document.querySelector("header"); // при необходимости поменяй селектор
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const rect = el.getBoundingClientRect();
+      const elTopPage = rect.top + window.scrollY;
+      const elHeight = rect.height;
+      const viewportHeight = window.innerHeight;
+
+      let targetScroll;
+
+      // Если элемент помещается целиком (с учётом хедера) — центрируем его в доступной области
+      if (elHeight <= viewportHeight - headerHeight) {
+        const available = viewportHeight - headerHeight;
+        const offsetToCenter = Math.max(0, (available - elHeight) / 2);
+        targetScroll = elTopPage - headerHeight - offsetToCenter;
+      } else {
+        // Иначе просто выравниваем по верху (чтобы верх не был под хедером)
+        targetScroll = elTopPage - headerHeight;
+      }
+
+      window.scrollTo({
+        top: Math.max(0, Math.floor(targetScroll)),
+        behavior: "smooth",
+      });
+    };
+    // первый вызов (через rAF чтобы DOM точно отрисовался)
+    const raf = requestAnimationFrame(alignOutlet);
+    // следим за изменением размера (например, подгрузились картинки/iframes)
+    const ro = new ResizeObserver(alignOutlet);
+    ro.observe(el);
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
+  }, [location.pathname]); // перезапускаем при смене маршрута внутри страницы
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -46,13 +88,16 @@ const MovieDetailsPage = () => {
         <div className={css.postDetailsFlex}>
           <div className={css.postDetailsImgCover}>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
           </div>
           <div className={css.postDetailsInfo}>
             <h2 className={css.postDetailsTitle}>
-              {movieDetails.title} ({movieDetails.release_date.slice(0, 4)})
+              {movieDetails.title}
+              {movieDetails.release_date ? (
+                <span>({movieDetails.release_date.slice(0, 4)})</span>
+              ) : null}{" "}
             </h2>
             <p>User Score:{Math.round(movieDetails.vote_average * 10)}%</p>
             <h3>Overview</h3>
@@ -94,7 +139,7 @@ const MovieDetailsPage = () => {
           Reviews
         </NavLink>
       </div>
-      <div>
+      <div ref={outletRef}>
         <Outlet />
       </div>
     </div>

@@ -35,7 +35,10 @@ const MovieCast = () => {
     <div className={css.castBlock}>
       {loading && <Loader />}
       {error !== null && <p>{error}. Try again later.</p>}
-      {cast !== null ? (
+      {(!cast || cast.length === 0) && (
+        <p>There is not any cast information for now. Check it later.</p>
+      )}
+      {Array.isArray(cast) && cast !== null ? (
         <Swiper
           breakpoints={{
             320: {

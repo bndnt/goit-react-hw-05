@@ -27,7 +27,8 @@ const MovieVideo = () => {
     <div>
       {loading && <Loader />}
       {error !== null && <p>{error}. Try again later.</p>}
-      {video !== null && (
+      {!video || (video.length === 0 && <p>No video yet. Check it later.</p>)}
+      {Array.isArray(video) && (
         <ul className={css.videoList}>
           {video
             .filter((item) => item.type === "Trailer")

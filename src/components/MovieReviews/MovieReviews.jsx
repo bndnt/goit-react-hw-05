@@ -23,7 +23,7 @@ const MovieReviews = () => {
         setLoading(true);
         const data = await RequestReviewsMovieById(movieId);
         setReview(data.results);
-        console.log("Reviews", data.results);
+        // console.log("Reviews", data.results);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -36,6 +36,9 @@ const MovieReviews = () => {
     <div>
       {loading && <Loader />}
       {error !== null && <p>{error}. Try again later.</p>}
+      {(!review || review.length === 0) && (
+        <p>No review yet. Check it later.</p>
+      )}
       {Array.isArray(review) && (
         <ul className={css.reviewList}>
           {review.map((item) => {
@@ -88,7 +91,7 @@ const MovieReviews = () => {
                   {isExpanded
                     ? item.content
                     : `${item.content.substring(0, 400)}${
-                        item.content.length > 400 ? "..." : ""
+                        item.content.length > 400 ? ".." : ""
                       }`}
                   {item.content.length > 400 && (
                     <button

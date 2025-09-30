@@ -26,7 +26,6 @@ function App() {
               <Route path="/movies" element={<MoviesPage />} />
               <Route path="//movies/:movieId" element={<MovieDetailsPage />}>
                 <Route index element={<Navigate to="video" replace />} />
-
                 <Route path="video" element={<MovieVideo />} />
                 <Route path="cast" element={<MovieCast />} />
                 <Route path="reviews" element={<MovieReviews />} />
