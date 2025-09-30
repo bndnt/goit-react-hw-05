@@ -18,14 +18,14 @@
   margin-bottom: 20px;
   transition: all 0.3s ease-in-out;
   position: relative;
-  height: 470px;
+  height: 380px;
 }
 .moviesListLink:nth-child(4n) {
   margin-right: 0;
 }
 .moviesListItem {
   display: block;
-  padding: 20px 10px;
+  height: 100%;
 }
 .moviesListItemRate {
   z-index: 2;
@@ -61,16 +61,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.3s ease-in-out;
+  padding: 5px 1px;
 }
 .moviesListLink:hover .moviesListItemText {
   color: rgb(235, 87, 87);
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 991px) {
   .moviesListLink {
-    display: block;
     width: calc((100% / 3) - 10px);
-    transition: all 0.3s;
     margin-right: 15px;
   }
   .moviesListLink:nth-child(4n) {
@@ -82,10 +81,9 @@
 }
 @media (max-width: 650px) {
   .moviesListLink {
-    display: block;
     width: calc((100% / 2) - 5px);
-    transition: all 0.3s;
     margin-right: 10px;
+    height: 330px;
   }
 
   .moviesListLink:nth-child(3n) {
@@ -97,5 +95,21 @@
   }
   .moviesListItemText {
     font-size: 14px;
+  }
+  .moviesListItemImgCover {
+    height: 300px;
+  }
+}
+@media (max-width: 360px) {
+  .moviesListItemImgCover {
+    height: 220px;
+  }
+  .moviesListLink {
+    display: block;
+    margin-right: 10px;
+    height: 250px;
+  }
+  .moviesListItemText {
+    font-size: 12px;
   }
 }

@@ -26,3 +26,8 @@
     margin: 0;
   }
 }
+@media (max-width: 991px) {
+  .main {
+    padding: 25px 0 50px;
+  }
+}

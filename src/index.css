@@ -44,7 +44,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #none;
 }
 button:focus,
 button:focus-visible {
@@ -129,10 +129,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 991px) {
   h1 {
-    font-size: 2.3em;
-    line-height: 1.1;
+    font-size: 2.5em;
+    line-height: 1;
   }
 }
 @media (max-width: 768px) {
@@ -141,6 +141,11 @@ button:focus-visible {
   }
 }
 @media (max-width: 650px) {
+  h1 {
+    font-size: 2.3em;
+    line-height: 1;
+    margin: 20px 0;
+  }
   .swiper-button-next,
   .swiper-button-prev {
     display: none;
@@ -148,5 +153,11 @@ button:focus-visible {
   .swiper-wrapper {
     width: 100%;
     margin: 0;
+  }
+}
+@media (max-width: 360px) {
+  h1 {
+    font-size: 2em;
+    margin: 15px 0;
   }
 }
